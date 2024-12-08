@@ -4,85 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buat Akun - Rental12345</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        .fade-in {
-            animation: fadeIn 1s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
-</head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white shadow-lg rounded-lg p-8 w-96 fade-in">
-        <h1 class="text-2xl font-bold text-center mb-4">Buat Akun</h1>
+    </head>
+    <link rel="stylesheet" href="static/style.css">
+<body>
+    <div>
+        <h1>Buat Akun</h1>
         <form @submit.prevent="signup" action="dashboard.html" method="get">
-            <div class="mb-4">
-                <label class="block text-sm font-semibold mb-2" for="name">Nama Lengkap</label>
+            
+                <label  for="name">Nama Lengkap</label>
                 <input 
                     type="text" 
                     id="name" 
                     placeholder="Masukkan nama" 
                     required 
-                    class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-300"
+                   
                 >
-            </div>
-            <div class="mb-4">
-                <label class="block text-sm font-semibold mb-2" for="email">Email</label>
+            
+            
+                <label for="email">Email</label>
                 <input 
                     type="email" 
                     id="email" 
                     placeholder="Enter your email" 
                     required 
-                    class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-300"
-                >
-            </div>
-            <div class="mb-4">
-                <label class="block text-sm font-semibold mb-2" for="password">Password</label>
+                  >
+            
+            
+                <label  for="password">Password</label>
                 <input 
                     type="password" 
                     id="password" 
                     placeholder="Enter your password" 
                     required 
-                    class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-300"
+                    
                 >
-            </div>
-            <div class="mb-4">
-                <label class="block text-sm font-semibold mb-2" for="no-telp">Nomor HP</label>
+          
+                <label for="no-telp">Nomor HP</label>
                 <input 
                     type="text" 
                     id="no-telp" 
                     placeholder="Masukkan nomor telepon" 
                     required 
-                    class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-300"
+                    
                 >
-            </div>
-            <div class="mb-4">
-                <label class="block text-sm font-semibold mb-2" for="birthdate">Tanggal Lahir</label>
+            
+                <label  for="birthdate">Tanggal Lahir</label>
                 <input 
                     type="date" 
                     id="birthdate" 
                     name="birthdate" 
                     required 
-                    class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-300"
+                  
                 >
-            </div>
+            
 
             <button 
                 type="submit" 
-                class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded"
+                
             >
                 Sign Up
             </button>
-            <p class="text-center text-sm text-gray-500 mt-4">
+            <p>
                  
                 <a href="login.html" class="text-green-500 hover:underline">Kembali ke login</a>
             </p>
