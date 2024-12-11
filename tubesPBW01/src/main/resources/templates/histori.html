@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histori Peminjaman</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+        }
+        #container {
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            color: blue;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: wheat;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin: 0 auto 20px;
+            background-color: #000;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: blue;
+            color: white;
+        }
+        td {
+            background-color: aliceblue;
+            color: black;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            background-color: blue;
+            font-size: 15pt;
+            font-family: 'Courier New', Courier, monospace;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Histori Peminjaman Anda</h1>
+        <table>
+            <tr>
+                <th>Nomor</th>
+                <th>Judul Film</th>
+                <th>Tanggal</th>
+            </tr>
+            <tr>
+                <td>1.</td>
+                <td>Back to the Future</td>
+                <td>29 November 2024</td>
+            </tr>
+            <tr>
+                <td>2.</td>
+                <td>Avatar</td>
+                <td>1 Desember 2024</td>
+
+            </tr>
+        </table>
+        <a href="dashboard.html">Kembali ke Beranda</a>
+    </div>
+</body>
+</html>
