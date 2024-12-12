@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Film</title>
+    <style>
+        main {
+            background-color: aquamarine;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        button {
+            background-color: blue;
+            color: white;
+            font-size: 15pt;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Tambah Film Baru</h1>
+        <form id="film-form">
+            <label for="judul">Judul Film:</label>
+            <input type="text" id="judul" name="judul" required><br><br>
+
+            <label for="genre">Genre (Pisahkan dengan koma):</label>
+            <input type="text" id="genre" name="genre" required><br><br>
+
+            <label for="aktor">Aktor:</label>
+            <input type="text" id="aktor" name="aktor" required><br><br>
+
+            <label for="poster">Poster Film:</label>
+            <input type="file" id="poster" name="poster" accept="image/*" required><br><br>
+
+            <button type="button" id="submit-film">Tambah Film</button>
+        </form>
+        <a href="dashboard.html" class="back-btn">Kembali ke Dashboard</a>
+    </main>
+
+    <script src="static/tambahfilm.js"></script>
+</body>
+</html>
