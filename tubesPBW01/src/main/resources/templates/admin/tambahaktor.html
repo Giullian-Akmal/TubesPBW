@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Aktor</title>
+    <link rel="stylesheet" href="../../static/admin/style.css">
+
+</head>
+<body>
+    <div>
+        <h1>Pengaturan Aktor</h1>
+        <h2>Masukkan Aktor Baru:</h2>
+        <form @submit.prevent="login" action="dashboard.html" method="get">
+            <label for="actor">Nama Aktor</label>
+            <input type="text" id="actor" name="actor" placeholder="Masukkan nama aktor">
+            <button type="submit">Tambah Aktor</button>
+        </form>
+        <center><a href="dashboard.html">Kembali</a></center>
+    </div>
+</body>
+</html>
