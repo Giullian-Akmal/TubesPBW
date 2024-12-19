@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laporan Bulanan</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    /* Mengurangi jarak antar elemen */
+    h1, h2 {
+      margin: 15px;  /* Mengurangi jarak antara judul */
+      padding: 0;   /* Menghilangkan padding di judul */
+    }
+
+    canvas {
+      margin-bottom: 10px;
+      width: 100% !important; /* Menjaga lebar canvas tetap 100% */
+    }
+
+    #content {
+      width: 100%;
+      margin: auto;
+      padding: 20px;  /* Sedikit padding untuk elemen */
+      font-family: Arial, sans-serif;
+    }
+
+    /* Ukuran untuk bar chart */
+    #myBarChart {
+      max-width: 100%;  /* Menyesuaikan lebar bar chart */
+      height: 200px !important;  /* Menurunkan tinggi bar chart */
+    }
+
+    /* Ukuran pie chart */
+    #genrePieChart, #actorPieChart {
+      max-width: 100%;  /* Mengatur lebar pie chart */
+      height: 200px !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <h1><center>Laporan Penyewaan Film</center></h1>
+    <h2><center>Film Terfavorit dan Jumlah Penyewa</center></h2>
+    <canvas id="myBarChart"></canvas>
+
+    <h2><center>Genre Terfavorit</center></h2>
+    <canvas id="genrePieChart"></canvas>
+
+    <h2><center>Aktor Terfavorit</center></h2>
+    <canvas id="actorPieChart"></canvas>
+
+    <center><input id="button" type="button" value="Unduh Laporan" onclick="convertHTMLtoPDF()"> </center>
+  </div>
+
+  <script>
+    // Bar Chart for Film Terfavorit
+    const barCtx = document.getElementById('myBarChart').getContext('2d');
+    new Chart(barCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Iron Man', 'Batman', 'Pak Jokowi', 'Pak Prabowo'],
+        datasets: [{
+          label: 'Jumlah Penyewa',
+          data: [250, 300, 450, 500],
+          backgroundColor: [
+            'rgba(75, 192, 192, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+            'rgba(153, 102, 255, 0.5)'
+          ],
+          borderColor: [
+            'rgba(75, 192, 192, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(153, 102, 255, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        responsive: true,  // Menyesuaikan dengan ukuran layar
+        maintainAspectRatio: false  // Agar tidak dipaksa dengan rasio tertentu
+      }
+    });
+
+    // Function to add percentage labels inside pie chart segments
+    function addLabels(chart) {
+      const ctx = chart.ctx;
+      const data = chart.data;
+      const meta = chart.getDatasetMeta(0);
+
+      meta.data.forEach((segment, index) => {
+        const position = segment.tooltipPosition();
+        const label = data.labels[index];
+
+        const radius = segment.outerRadius;
+        const startAngle = segment.startAngle;
+        const endAngle = segment.endAngle;
+        const angle = (startAngle + endAngle) / 2;
+
+        const x = segment.x + Math.cos(angle) * radius / 1.5;
+        const y = segment.y + Math.sin(angle) * radius / 1.5;
+
+        ctx.fillStyle = 'black';
+        ctx.font = '12px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(label, x, y);
+      });
+    }
+
+    // Pie Chart for Genre Terfavorit
+    const genreCtx = document.getElementById('genrePieChart').getContext('2d');
+    const genreChart = new Chart(genreCtx, {
+      type: 'pie',
+      data: {
+        labels: ['Action (50%)', 'Drama (15%)', 'Horor (10%)', 'Romance (10%)', 'Komedi (10%)', 'Sci-Fi (5%)'],
+        datasets: [{
+          data: [50, 15, 10, 10, 10, 5],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+            'rgba(75, 192, 192, 0.5)',
+            'rgba(153, 102, 255, 0.5)',
+            'rgba(201, 203, 207, 0.5)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(201, 203, 207, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
+        hover: {
+          mode: 'nearest',
+          intersect: true
+        },
+        animation: {
+          onComplete: function () {
+            addLabels(this);
+          }
+        }
+      }
+    });
+
+    // Pie Chart for Aktor Terfavorit
+    const actorCtx = document.getElementById('actorPieChart').getContext('2d');
+    const actorChart = new Chart(actorCtx, {
+      type: 'pie',
+      data: {
+        labels: ['Joko Widodo (50%)', 'Prabowo Subianto (25%)', 'Robert Downey Jr (25%)'],
+        datasets: [{
+          data: [50, 25, 25],
+          backgroundColor: [
+            'rgba(255, 159, 64, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(153, 102, 255, 0.5)'
+          ],
+          borderColor: [
+            'rgba(255, 159, 64, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(153, 102, 255, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
+        hover: {
+          mode: 'nearest',
+          intersect: true
+        },
+        animation: {
+          onComplete: function () {
+            addLabels(this);
+          }
+        }
+      }
+    });
+
+    // Function to convert HTML to PDF
+    function convertHTMLtoPDF() {
+      const { jsPDF } = window.jspdf;
+
+      // Sembunyikan tombol "Unduh Laporan" sementara
+      const button = document.getElementById('button');
+      button.style.display = 'none';  // Menyembunyikan tombol
+
+      // Ambil elemen container
+      let pdfContainer = document.querySelector('#content');
+
+      // Buat dokumen PDF
+      let doc = new jsPDF('p', 'mm', 'a4'); // A4 size
+      doc.internal.pageSize.height = 297;  // Set to A4 height
+
+      // Konversi HTML ke PDF
+      doc.html(pdfContainer, {
+        callback: function (doc) {
+          doc.save("Laporan_Penyewaan_Film.pdf");
+
+          // Tampilkan kembali tombol setelah proses PDF selesai
+          button.style.display = 'inline-block';  // Menampilkan tombol kembali
+        },
+        x: 10,
+        y: 10,
+        width: 180,
+        windowWidth: 800, // Set the width of the page
+        background: '#FFFFFF' // Menyeting latar belakang canvas menjadi putih
+      });
+    }
+  </script>
+</body>
+</html>
