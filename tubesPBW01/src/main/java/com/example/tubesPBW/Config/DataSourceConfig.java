@@ -1,4 +1,4 @@
-package com.example.tubesPBW.config;
+package com.example.tubesPBW.Config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
