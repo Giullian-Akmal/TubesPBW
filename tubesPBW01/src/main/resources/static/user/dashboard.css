@@ -142,3 +142,31 @@ a:hover {
     font-weight: bold;
     transition: background-color 0.3s;
     cursor: pointer;}
+
+    #container {
+        max-width: 1500px;
+        width: 100%;
+        text-align: center;
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+    table {
+        width: 80%;
+        border-collapse: collapse;
+        margin: 0 auto 20px;
+        background-color: white;
+    }
+    th, td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+    }
+    th {
+        background-color: #003366;
+        color: white;
+    }
+    td {
+        color: black;
+    }

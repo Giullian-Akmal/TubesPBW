@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin</title>
-    <link rel="stylesheet" href="../../static/admin/dashboard.css">
+    <link rel="stylesheet" href="/admin/dashboard.css">
 
 </head>
 <body>
@@ -15,8 +15,8 @@
             <nav>
                 <ul>
                     <li><a href="laporan.html">Lihat Laporan Bulanan</a></li>
-                    <li><a href="tambahaktor.html">Tambah Aktor</a></li>
-                    <li><a href="tambahgenre.html">Tambah Genre</a></li>
+                    <li><a href="aktor.html">List Aktor</a></li>
+                    <li><a href="genre.html">List Genre</a></li>
                 </ul>
             </nav>
         </aside>
@@ -31,7 +31,23 @@
                 </div>
                 <a id="logout-btn" href="login.html">Logout</a>
             </header>
-
+            <div id="container">
+                <h1>List Film</h1>
+                <table>
+                    <tr>
+                        <th>Film</th>
+                        <th>Judul Film</th>
+                        <th>Genre</th>
+                        <th>Aktor</th>
+                    </tr>
+                    <tr th:each="movie: ${movies}">
+                        <td></td>
+                        <td th:text="${movie.nama}"></td>
+                        <td th:text="${movie.genre}"></td>
+                        <td th:text="${movie.aktor}"></td>
+                    </tr>
+                </table>
+            </div>
             
         </main>
     </div>

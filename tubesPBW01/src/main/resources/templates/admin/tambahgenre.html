@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Genre</title>
-    <link rel="stylesheet" href="../../static/admin/style.css">
+    <link rel="stylesheet" href="/admin/style.css">
 </head>
 <body>
     <div>
         <h1>Halaman Penambahan Genre</h1>
         <h2>Masukkan Genre Baru:</h2>
-        <form @submit.prevent="login" action="dashboard.html" method="get">
-            <label for="genre">Nama Genre</label>
-            <input type="text" id="genre" name="genre" placeholder="Masukkan nama Genre">
-            <button type="submit">Tambah Genre</button>
+        <form action="/admin/tambah-genre" method="post">
+            <label for="genre-name">Nama Genre:</label>
+            <input type="text" id="genre-name" name="namaGenre" placeholder="Masukkan nama genre" required>
+            <button type="submit" class="btn">Tambah Genre</button>
         </form>
-        <center><a href="dashboard.html">Kembali</a></center>
+        <a href="genre.html">Kembali</a>
     </div>
 </body>
 </html>
