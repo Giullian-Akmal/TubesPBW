@@ -20,10 +20,10 @@ public class RiwayatController {
         this.peminjamanRepository = peminjamanRepository;
     }
 
-    @GetMapping("/riwayat")
+    @GetMapping("/histori.html")
     public String showRiwayatPeminjaman(@RequestParam("userId") int userId, Model model) {
         List<Peminjaman> riwayatPeminjaman = peminjamanRepository.findByUserId(userId);
         model.addAttribute("riwayatPeminjaman", riwayatPeminjaman);
-        return "user/riwayat";
+        return "user/histori.html";
     }
 }

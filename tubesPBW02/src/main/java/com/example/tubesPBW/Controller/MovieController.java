@@ -1,7 +1,7 @@
-package com.example.tubesPBW.controller;
+package com.example.tubesPBW.Controller;
 
-import com.example.tubesPBW.model.Film;
-import com.example.tubesPBW.repository.FilmRepository;
+import com.example.tubesPBW.model.Movie;
+import com.example.tubesPBW.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
