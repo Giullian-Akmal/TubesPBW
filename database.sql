@@ -1,5 +1,5 @@
 CREATE TABLE Genre (
-    Genre_id INT NOT NULL PRIMARY KEY,  -- Menambahkan genre_id sebagai primary key
+    Genre_id SERIAL PRIMARY KEY,  -- Menambahkan genre_id sebagai primary key
     genre VARCHAR(50) NOT NULL
 );
 
