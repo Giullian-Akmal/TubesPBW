@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
+    <link rel="stylesheet" href="/admin/dashboard.css">
+
+</head>
+<body>
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside>
+            <h2>Admin Menu</h2>
+            <nav>
+                <ul>
+                    <li><a href="laporan.html">Lihat Laporan Bulanan</a></li>
+                    <li><a href="aktor.html">List Aktor</a></li>
+                    <li><a href="genre.html">List Genre</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main>
+            <header>
+                <div>
+                    <h1>Selamat datang di Rental12345.com</h1>
+                    <p>Halo, Admin</p>
+                    <a id="tambah-btn" href="tambahfilm.html">Tambah judul film</a>
+                </div>
+                <a id="logout-btn" href="login.html">Logout</a>
+            </header>
+            <div id="container">
+                <h1>List Film</h1>
+                <table>
+                    <tr>
+                        <th>Film</th>
+                        <th>Judul Film</th>
+                        <th>Genre</th>
+                        <th>Aktor</th>
+                    </tr>
+                    <tr th:each="movie: ${movies}">
+                        <td th:text="${movie.id}"></td>
+                        <td th:text="${movie.nama}"></td>
+                        <td th:text="${movie.aktor}"></td>
+                        <td th:text="${movie.genre}"></td>
+                    </tr>
+                </table>
+            </div>
+            
+        </main>
+    </div>
+
+    
+</body>
+<script src="../../static/admin/dashboard.js"></script>
+</html>

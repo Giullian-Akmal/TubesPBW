@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/admin/style.css">
+    <title>Tambah Peminjaman</title>
+</head>
+<body>
+    <div>
+        <h1>Tambah Peminjaman</h1>
+        <form action="/user/tambah-pinjam" method="post">
+            <label for="judul">Judul Film:</label>
+            <select name="movie" id="movie">
+                <option th:each="movie: ${movies}"
+                        th:value="${movie.nama}"
+                        th:text="${movie.nama}">
+                </option>
+            </select>
+
+            
+            <label for="durasi">Durasi Peminjaman:</label>
+            <input type="number" id="durasi" name="durasi" required><br><br>
+
+            <button type="submit" id="submit-film">Tambah</button>
+        </form>
+        <a href="pinjam.html" class="back-btn">Kembali</a>
+    </div>
+</body>
+</html>
